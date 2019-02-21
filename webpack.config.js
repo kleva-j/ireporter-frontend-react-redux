@@ -21,13 +21,13 @@ module.exports = {
   entry: './src/js/index.js',
   output: {
     path: path.resolve(__dirname, 'public', 'dist'),
-    filename: 'js/[name].js',
+    filename: 'js/index.js',
     publicPath: '/public/',
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -52,9 +52,6 @@ module.exports = {
         ],
       },
     ],
-  },
-  resolve: {
-    extensions: ['*', 'js', 'jsx'],
   },
   plugins: [
     new MiniCssExtractPlugin({
