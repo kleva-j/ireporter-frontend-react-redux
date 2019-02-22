@@ -1,5 +1,8 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
+const Imagemin = require('imagemin-webpack');
+const imageminSvgo = require('imagemin-svgo');
+const imageminPngQuant = require('imagemin-pngquant');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -17,17 +20,24 @@ const postCSSLoader = {
   },
 };
 
+const imageminOptions = {
+  plugins: [
+    imageminPngQuant(),
+    imageminSvgo(),
+  ],
+};
+
 module.exports = {
   entry: './src/js/index.js',
   output: {
     path: path.resolve(__dirname, 'public', 'dist'),
-    filename: 'js/[name].js',
+    filename: 'js/index.js',
     publicPath: '/public/',
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -51,10 +61,11 @@ module.exports = {
           { loader: 'sass-loader', options: { sourceMap: true } },
         ],
       },
+      {
+        test: /\.(png|jp(e*)g|svg)$/,
+        loader: 'file-loader?name=images/[name].[ext]',
+      },
     ],
-  },
-  resolve: {
-    extensions: ['*', 'js', 'jsx'],
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -64,5 +75,6 @@ module.exports = {
       filename: 'index.html',
       template: path.join(__dirname, 'src', 'index.html'),
     }),
+    new Imagemin({ imageminOptions }),
   ],
 };
