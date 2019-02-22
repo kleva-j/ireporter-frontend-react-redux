@@ -1,5 +1,9 @@
-import '../scss/reset.scss';
+/* eslint-disable import/extensions */
+/* eslint-disable react/jsx-filename-extension */
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from '../Components/App.js';
+import '../scss/styles.scss';
+import '../scss/layout.scss';
 
-const multi = (a, b) => a * b;
-
-multi(3, 5);
+ReactDOM.render(<App />, document.getElementById('root'));
