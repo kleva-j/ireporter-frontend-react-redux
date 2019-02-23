@@ -13,7 +13,7 @@ const postCSSLoader = {
     plugins() {
       return [
         autoprefixer({
-          browsers: ['last 3 versions'],
+          browsers: ['last 3 versions', 'IE > 8'],
         }),
       ];
     },
