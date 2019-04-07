@@ -1,18 +1,11 @@
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import Navbar from '../Navbar/navbar';
-import SignedOutLinks from '../Navbar/signedOutLinks';
 import itMatters from '../../images/it_matters.jpg';
 import clowts from '../../images/clowts.png';
 
 const LandingPage = () => (
   <>
-    <header>
-      <Navbar>
-        <SignedOutLinks />
-      </Navbar>
-    </header>
     <section className="main">
       <main className="mainsection flex">
         <img src={itMatters} alt="Nothing to show" />
@@ -21,7 +14,7 @@ const LandingPage = () => (
           <p>Report any incident related to corruption</p>
           <div className="button-group j-c-c">
             <div className="btn mg no-hover white" href="#learn-more">Learn more</div>
-            <div className="btn mg no-hover white"><a className="span" href="/api/v1/users/auth/signup"> Get started</a></div>
+            <div className="btn mg no-hover white"><a className="span" href="/signup"> Get started</a></div>
           </div>
         </div>
       </main>

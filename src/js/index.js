@@ -1,16 +1,14 @@
-/* eslint-disable import/extensions */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import App from '../Components/App.js';
+import App from '../Components/App';
+import { store } from '../Store/store';
 import '../scss/styles.scss';
 import '../scss/layout.scss';
+import '../scss/reset.scss';
 
-const store = createStore();
-
-ReactDOM.render(
+render(
   <Provider store={store}>
     <App />
   </Provider>,

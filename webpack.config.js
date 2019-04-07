@@ -32,7 +32,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'public', 'dist'),
     filename: 'js/index.js',
-    publicPath: '/public/',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -66,6 +66,9 @@ module.exports = {
         loader: 'file-loader?name=images/[name].[ext]',
       },
     ],
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   plugins: [
     new MiniCssExtractPlugin({
