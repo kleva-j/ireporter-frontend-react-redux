@@ -21,6 +21,7 @@ const requests = {
 
 const Auth = {
   login: (username, password) => requests.post('/users/auth/login', { username, password }),
+  signup: userData => requests.post('/users/auth/signup', userData),
 };
 
 export default {

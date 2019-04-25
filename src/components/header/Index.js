@@ -1,9 +1,6 @@
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import PropTypes from 'prop-types';
-import logo from '../../images/bg-2.svg';
+import logo from '../../assets/images/bg-2.svg';
 
 const Navbar = ({ children }) => (
   <div className="navbar fixed shade-default bg-light">

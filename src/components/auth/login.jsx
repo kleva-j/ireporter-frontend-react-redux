@@ -4,8 +4,10 @@ import React, { Component } from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { loginRequest, updateAuthField, loginPageUnloaded } from '../../Store/Actions';
-import agent from '../../Store/agent';
+import Navbar from '../header/Index';
+import Nav from '../header/signedOutLinks';
+import { loginRequest, updateAuthField, loginPageUnloaded } from '../../store/Actions/index';
+import agent from '../../store/agent';
 import ListErrors from '../ListErrors';
 
 const { Auth } = agent;
@@ -31,29 +33,34 @@ class Login extends Component {
     const { currentUser, history, redirectTo } = this.props;
     const isUser = (currentUser.constructor === Object && Object.keys(currentUser).length === 0);
     if (isUser) return;
-    history.push(redirectTo);
+    history.push('/');
   }
 
   render() {
     const { username, password, errors } = this.props;
     return (
-      <div className="container j-c-c">
-        <form method="POST" className="login-form w-100">
-          <ListErrors errors={errors} />
-          <h1 className="h1">Log In</h1>
-          <div className="form-group">
-            <input type="text" name="username" className="form-control" placeholder="Username" value={username} onChange={this.updateLoginField} />
-          </div>
-          <div className="form-group">
-            <input type="password" name="password" className="form-control" placeholder="Password" value={password} onChange={this.updateLoginField} />
-          </div>
-          <button type="submit" className="btn primary" onClick={this.submitForm(username, password)}>Log in</button>
-          <small className="block text-dark">
-          Don't have an account? sign up
-            <a className="underscore" href="/signup"> Here</a>
-          </small>
-        </form>
-      </div>
+      <>
+        <Navbar>
+          <Nav />
+        </Navbar>
+        <div className="container j-c-c">
+          <form method="POST" className="login-form w-100">
+            <ListErrors errors={errors} />
+            <h1 className="h1">Log In</h1>
+            <div className="form-group">
+              <input type="text" name="username" className="form-control" placeholder="Username" value={username} onChange={this.updateLoginField} />
+            </div>
+            <div className="form-group">
+              <input type="password" name="password" className="form-control" placeholder="Password" value={password} onChange={this.updateLoginField} />
+            </div>
+            <button type="submit" className="btn primary" onClick={this.submitForm(username, password)}>Log in</button>
+            <small className="block text-dark">
+            Don't have an account? sign up
+              <a className="underscore" href="/signup"> Here</a>
+            </small>
+          </form>
+        </div>
+      </>
     );
   }
 }
