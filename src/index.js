@@ -2,11 +2,10 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import App from '../Components/App';
-import { store } from '../Store/store';
-import '../scss/styles.scss';
-import '../scss/layout.scss';
-import '../scss/reset.scss';
+import App from './app';
+import { store } from './store/store';
+import './assets/scss/styles.scss';
+import './assets/scss/layout.scss';
 
 render(
   <Provider store={store}>

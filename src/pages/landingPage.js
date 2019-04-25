@@ -1,11 +1,16 @@
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import itMatters from '../../images/it_matters.jpg';
-import clowts from '../../images/clowts.png';
+import itMatters from '../assets/images/it_matters.jpg';
+import clowts from '../assets/images/clowts.png';
+import Navbar from '../components/header/Index';
+import Nav from '../components/header/signedOutLinks';
 
 const LandingPage = () => (
   <>
+    <Navbar>
+      <Nav />
+    </Navbar>
     <section className="main">
       <main className="mainsection flex">
         <img src={itMatters} alt="Nothing to show" />
