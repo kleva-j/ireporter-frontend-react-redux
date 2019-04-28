@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import itMatters from '../../assets/images/it_matters.jpg';
 import clowts from '../../assets/images/clowts.png';

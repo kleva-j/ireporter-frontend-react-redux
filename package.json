@@ -38,6 +38,7 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.4.7",
+    "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^2.1.0",
@@ -68,8 +69,8 @@
     "write-file-webpack-plugin": "^4.5.0"
   },
   "dependencies": {
-    "@material-ui/core": "^3.9.3",
-    "@material-ui/icons": "^3.0.2",
+    "@emotion/core": "^10.0.10",
+    "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "express": "^4.16.4",
     "history": "^4.7.2",
@@ -82,8 +83,12 @@
     "react-router-dom": "^4.3.1",
     "react-router-prop-types": "^1.0.4",
     "react-router-redux": "^4.0.8",
+    "react-spinners": "^0.5.4",
+    "react-toastify": "^5.1.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "toasted-notes": "^2.1.5"
   }
 }
