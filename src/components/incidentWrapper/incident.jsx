@@ -30,7 +30,7 @@ const Incident = props => {
         {month}
       </div>
       <div className="grow-1">
-        <Link to={} className="pd-l">
+        <Link to='/' className="pd-l">
           <span className="wrap bolder">{title}</span>
         </Link>
       </div>
@@ -42,7 +42,7 @@ const Incident = props => {
       </div>
       <div className="edit">
         <span className="btn bd-grn bg-t mg-r">
-          <Link to={} className="grn">Edit</Link>
+          <Link to='/' className="grn">Edit</Link>
         </span>
         <span className="btn bd-red bg-t red" data-id={id} data-type={type}>Delete</span>
       </div>
