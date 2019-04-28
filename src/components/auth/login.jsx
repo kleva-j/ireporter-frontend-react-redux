@@ -8,7 +8,7 @@ import Navbar from '../header/Index';
 import Nav from '../header/signedOutLinks';
 import { loginRequest, updateAuthField, loginPageUnloaded } from '../../store/Actions/index';
 import agent from '../../store/agent';
-import ListErrors from '../ListErrors';
+import ListErrors from '../listErrors';
 
 const { Auth } = agent;
 
@@ -33,7 +33,7 @@ class Login extends Component {
     const { currentUser, history, redirectTo } = this.props;
     const isUser = (currentUser.constructor === Object && Object.keys(currentUser).length === 0);
     if (isUser) return;
-    history.push('/');
+    history.push(redirectTo);
   }
 
   render() {

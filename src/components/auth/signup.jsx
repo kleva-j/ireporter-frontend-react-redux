@@ -6,7 +6,7 @@ import Navbar from '../header/Index';
 import Nav from '../header/signedOutLinks';
 import { loginRequest, updateAuthField, loginPageUnloaded } from '../../store/Actions/index';
 import agent from '../../store/agent';
-import ListErrors from '../ListErrors';
+import ListErrors from '../listErrors';
 
 const { Auth } = agent;
 
