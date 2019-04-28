@@ -1,5 +1,6 @@
 import React from 'react';
 import profileImage from '../../assets/images/profile-pic.png';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
@@ -8,7 +9,7 @@ const Sidebar = () => {
       <div className="profile">
 
         <div className="user item">
-          <a href=""><i className="fas fa-user-circle" title="user profile"></i></a>
+          <Link to=""><i className="fas fa-user-circle" title="user profile"></i></Link>
         </div>
         <div className="close">
           <div className="mg-t">
@@ -26,13 +27,13 @@ const Sidebar = () => {
       <div className="details">
         <ul className="list-item">
           <li className="item">
-            <a href="/api/v1/redflag"><i className="hic fas fa-flag-checkered" title="red-flags"></i></a>
-            <a href="/api/v1/redflag" className="sd">Red-Flags <b>124</b></a>
+            <Link to="/incidents/redflag"><i className="hic fas fa-flag-checkered" title="red-flags"></i></Link>
+            <Link to="/incidents/redflag" className="sd">Red-Flags <b>124</b></Link>
           </li>
 
           <li className="item">
-            <a href="/api/v1/intervention"><i className="hic fas fa-headset"  title="interventions"></i></a>
-            <a href="/api/v1/intervention" className="sd">Interventions <b>75</b></a>
+            <Link to="/incidents/intervention"><i className="hic fas fa-headset"  title="interventions"></i></Link>
+            <Link to="/incidents/intervention" className="sd">Interventions <b>75</b></Link>
           </li>
 
         </ul>

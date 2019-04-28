@@ -14,7 +14,7 @@ const ViewIncident = props => {
       </Navbar>
       <section>
         <div className="flex">
-          {isAdmin && <Sidebar />}
+          <Sidebar />
           <div className="right w-100">
             <div className="breadboard">
               <div className="breadboard-header j-c-sb mg-t-b flex-block-i">
