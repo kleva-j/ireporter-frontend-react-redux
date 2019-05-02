@@ -2,7 +2,7 @@
 import {
   ASYNC_START,
   ASYNC_END,
-} from '../Constant/actionTypes';
+} from '../actions/actionTypes';
 
 const isPromise = payload => payload && typeof payload.then === 'function';
 

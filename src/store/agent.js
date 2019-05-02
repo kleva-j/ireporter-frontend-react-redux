@@ -20,7 +20,7 @@ const requests = {
 };
 
 const Auth = {
-  login: (username, password) => requests.post('/users/auth/login', { username, password }),
+  login: userData => requests.post('/users/auth/login', userData),
   signup: userData => requests.post('/users/auth/signup', userData),
 };
 

@@ -1,98 +1,82 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react/jsx-filename-extension */
-import React, { Component } from 'react';
+/* eslint-disable react/jsx-no-bind */
+import React, { useState } from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Loader from '../loaders';
 import Navbar from '../header/Index';
 import Nav from '../header/signedOutLinks';
-import { loginRequest, updateAuthField, loginPageUnloaded } from '../../store/Actions/index';
-import agent from '../../store/agent';
+import { loginAction } from '../../store/actions';
 import ListErrors from '../listErrors';
 
-const { Auth } = agent;
+const Login = (props) => {
+  const [errors, setErrors] = useState([]);
+  const [userDetails, setUserDetails] = useState({
+    username: '',
+    password: '',
+  });
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    const { updateLoginField, onSubmit } = this.props;
-    this.successLogin = this.successLogin.bind(this);
-    this.updateLoginField = ev => updateLoginField(ev.target.name, ev.target.value);
-    this.submitForm = (username, password) => (ev) => {
-      ev.preventDefault();
-      onSubmit({ username, password }, this.successLogin);
-    };
-  }
+  const {
+    logIn, history, inProgress,
+  } = props;
 
-  componentWillUnmount() {
-    const { onUnload } = this.props;
-    onUnload();
-  }
+  const submitForm = async (event) => {
+    event.preventDefault();
+    setErrors([]);
+    const result = await logIn(userDetails);
+    if (result && result.response.body.status !== 200) {
+      const { response: { body: { error } } } = result;
+      return setErrors([error]);
+    }
+    return history.push('/profile');
+  };
 
-  successLogin() {
-    const { currentUser, history, redirectTo } = this.props;
-    const isUser = (currentUser.constructor === Object && Object.keys(currentUser).length === 0);
-    if (isUser) return;
-    history.push(redirectTo);
-  }
+  const updateLoginDetails = (event) => {
+    setErrors([]);
+    setUserDetails({
+      ...userDetails, [event.target.name]: event.target.value
+    });
+  };
 
-  render() {
-    const { username, password, errors } = this.props;
-    return (
-      <>
-        <Navbar>
-          <Nav />
-        </Navbar>
-        <div className="container j-c-c">
-          <form method="POST" className="login-form w-100">
-            <ListErrors errors={errors} />
-            <h1 className="h1">Log In</h1>
-            <div className="form-group">
-              <input type="text" name="username" className="form-control" placeholder="Username" value={username} onChange={this.updateLoginField} />
-            </div>
-            <div className="form-group">
-              <input type="password" name="password" className="form-control" placeholder="Password" value={password} onChange={this.updateLoginField} />
-            </div>
-            <button type="submit" className="btn primary" onClick={this.submitForm(username, password)}>Log in</button>
-            <small className="block text-dark">
-            Don't have an account? sign up
-              <a className="underscore" href="/signup"> Here</a>
-            </small>
-          </form>
-        </div>
-      </>
-    );
-  }
-}
+  const { username, password } = userDetails;
 
-const mapStateToProps = ({ auth }) => ({ ...auth });
-
-const mapDispatchToProps = dispatch => ({
-  updateLoginField: (key, value) => dispatch(updateAuthField(key, value)),
-  onSubmit: ({ username, password }, callback) => dispatch(
-    loginRequest(Auth.login(username, password), callback),
-  ),
-  onUnload: () => dispatch(loginPageUnloaded()),
-});
-
-Login.propTypes = {
-  username: PropTypes.string,
-  password: PropTypes.string,
-  updateLoginField: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onUnload: PropTypes.func.isRequired,
-  errors: PropTypes.arrayOf(PropTypes.string),
-  currentUser: PropTypes.instanceOf(Object),
-  history: ReactRouterPropTypes.history.isRequired,
-  redirectTo: PropTypes.node,
+  return (
+    <>
+      <Navbar>
+        <Nav />
+      </Navbar>
+      <div className="container j-c-c">
+        <form method="POST" className="login-form w-100" onSubmit={submitForm}>
+          <ListErrors errors={errors} active color="red" />
+          {inProgress && <Loader loading />}
+          <h1 className="h1">Log In</h1>
+          <div className="form-group">
+            <input type="text" name="username" className="form-control" placeholder="Username" value={username} required onChange={updateLoginDetails} />
+          </div>
+          <div className="form-group">
+            <input type="password" name="password" className="form-control" placeholder="Password" value={password} required onChange={updateLoginDetails} />
+          </div>
+          <button type="submit" className="btn primary">Log in</button>
+          <small className="block text-dark">
+          Don't have an account? sign up
+            <a className="underscore" href="/signup"> Here</a>
+          </small>
+        </form>
+      </div>
+    </>
+  );
 };
 
-Login.defaultProps = {
-  errors: [],
-  currentUser: {},
-  redirectTo: null,
-  username: '',
-  password: '',
+const mapStateToProps = ({ authReducer }) => ({ ...authReducer });
+
+const mapDispatchToProps = {
+  logIn: loginAction
+};
+
+Login.propTypes = {
+  logIn: PropTypes.func.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
+  inProgress: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
