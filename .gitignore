@@ -1,2 +1,7 @@
-/node_modules
+node_modules
 /dist
+.DS_Store
+coverage
+/linters
+/src/__tests__/redux/*/__snapshots__/
+/src/__tests__/views/__snapshots__/
