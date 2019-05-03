@@ -2,14 +2,13 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Toast from 'toasted-notes';
 import Loader from '../loaders';
 import Navbar from '../header/Index';
 import Nav from '../header/signedOutLinks';
 import { signupAction } from '../../store/actions';
-import ListErrors from '../listErrors';
 
 const Signup = (props) => {
-  const [errors, setErrors] = useState([]);
   const [userDetails, setUserDetails] = useState({
     firstname: '',
     lastname: '',
@@ -25,7 +24,6 @@ const Signup = (props) => {
   } = props;
 
   const updateSignupDetails = (event) => {
-    setErrors([]);
     setUserDetails({
       ...userDetails, [event.target.name]: event.target.value
     });
@@ -38,14 +36,14 @@ const Signup = (props) => {
 
   const submitForm = async (event) => {
     event.preventDefault();
-    setErrors([]);
-    if (password !== password2) return setErrors(['Ensure the password and confirm password are the same']);
+    if (password !== password2) return Toast.notify('Ensure the password and confirm password are the same');
     const result = await signUp(userDetails);
-    if (result && result.response.body.status !== 201) {
+    if (result) {
       const { response: { body: { error } } } = result;
-      return setErrors([error]);
+      Toast.notify(error);
+    } else {
+      history.push('/profile');
     }
-    return history.push('/profile');
   };
 
   return (
@@ -55,7 +53,6 @@ const Signup = (props) => {
       </Navbar>
       <div className="container j-c-c">
         <form method="POST" className="login-form w-100" onSubmit={submitForm}>
-          <ListErrors errors={errors} active color="red" />
           {inProgress && <Loader loading />}
           <h1 className="h1">Sign Up</h1>
           <div className="row">
@@ -77,10 +74,10 @@ const Signup = (props) => {
             <input type="tel" value={phonenumber} className="form-control" name="phonenumber" placeholder="Phone number" pattern="^[0]\d{10}$" required onChange={updateSignupDetails} />
           </div>
           <div className="form-group">
-            <input type="password" value={password} minLength="6" className="form-control" name="password" placeholder="Password" required onChange={updateSignupDetails} />
+            <input type="password" value={password} minLength="8" className="form-control" name="password" placeholder="Password" required onChange={updateSignupDetails} />
           </div>
           <div className="form-group">
-            <input type="password" value={password2} minLength="6" className="form-control" name="password2" placeholder="Confirm Password" required onChange={updateSignupDetails} />
+            <input type="password" value={password2} minLength="8" className="form-control" name="password2" placeholder="Confirm Password" required onChange={updateSignupDetails} />
           </div>
 
           <button type="submit" className="btn primary">Sign up</button>

@@ -1,22 +1,20 @@
 import {
-  LOGIN,
-  SIGNUP,
   ASYNC_START,
-  ASYNC_END
+  ASYNC_END,
+  CREATE_INCIDENT
 } from '../actions/actionTypes';
 
 const initialState = {
-  currentUser: {},
+  incident: {},
   inProgress: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN:
-    case SIGNUP:
+    case CREATE_INCIDENT:
       return {
         ...state,
-        currentUser: action.payload.data[0],
+        incident: action.payload.data[0],
       };
 
     case ASYNC_START:

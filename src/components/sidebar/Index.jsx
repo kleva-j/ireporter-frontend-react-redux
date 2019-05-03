@@ -28,8 +28,8 @@ const Sidebar = () => (
     <div className="details">
       <ul className="list-item">
         <li className="item">
-          <Link to="/incidents/redflag"><i className="hic fas fa-flag-checkered" title="red-flags" /></Link>
-          <Link to="/incidents/redflag" className="sd">
+          <Link to="/incidents/red-flag"><i className="hic fas fa-flag-checkered" title="red-flags" /></Link>
+          <Link to="/incidents/red-flag" className="sd">
             Red-Flags
             {' '}
             <b>124</b>

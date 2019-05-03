@@ -232,16 +232,15 @@ li a{ color: var(--darken)}
   cursor: pointer;
 }
 
+.mx-width {
+  max-width: 500px;
+}
+
 #close:hover { background: rgb(85, 182, 214); }
 
 #move-to-bottom {
   position: fixed;
   bottom: 0%;
-  width: 100%;
-}
-
-#map{
-  height: 320px;
   width: 100%;
 }
 
