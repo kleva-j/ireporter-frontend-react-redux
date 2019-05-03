@@ -4,11 +4,11 @@ import _superagent from 'superagent';
 const superagent = superagentPromise(_superagent, global.Promise);
 const API_ROOT = 'https://i--reporter--api.herokuapp.com/api/v1';
 const responseBody = res => res.body;
-let token = null;
+
+const token = window.localStorage.getItem('jwt');
+
 const tokenPlugin = (req) => {
-  if (token) {
-    req.set('authorization', token);
-  }
+  req.set('authorization', `BEARER ${token}`);
 };
 
 const requests = {
@@ -24,7 +24,11 @@ const Auth = {
   signup: userData => requests.post('/users/auth/signup', userData),
 };
 
+const crud = {
+  createIncident: (data, type) => requests.post(`/${type}`, data),
+};
+
 export default {
   Auth,
-  setToken: (_token) => { token = _token; },
+  crud,
 };

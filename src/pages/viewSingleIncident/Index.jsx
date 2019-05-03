@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Sidebar from '../../components/sidebar/Index';
 import Navbar from '../../components/header/Index';
 import Nav from '../../components/header/SignedInLinks';
@@ -36,7 +37,10 @@ const SingleIncident = (props) => {
 };
 
 SingleIncident.propTypes = {
-
+  date: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  comment: PropTypes.string.isRequired,
+  evidence: PropTypes.string.isRequired,
 };
 
 export default SingleIncident;
