@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const Incident = (props) => {
   const { id, type, createdOn, comment, status } = props;
   const [, month, date] = (new Date(createdOn).toDateString()).split(' ');
-  const [title] = comment.split('>>');
+  const [title] = comment ? comment.split('>>') : '';
   let indicator;
 
   switch (status) {

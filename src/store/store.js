@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { logger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import thunk from 'redux-thunk';
-import reducers from './reducers';
+import reducers from './reducers/rootReducer';
 
 const getMiddlewares = () => {
   if (process.env.NODE_ENV === 'production') {
