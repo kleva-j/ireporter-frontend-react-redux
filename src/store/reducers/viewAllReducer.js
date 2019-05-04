@@ -1,20 +1,16 @@
-import {
-  ASYNC_START,
-  ASYNC_END,
-  CREATE_INCIDENT
-} from '../actions/actionTypes';
+import { ASYNC_START, ASYNC_END, GET_ALL_INCIDENTS } from '../actions/actionTypes';
 
 const initialState = {
-  incident: {},
-  inProgress: false
+  records: {},
+  inProgress: false,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_INCIDENT:
+    case GET_ALL_INCIDENTS:
       return {
         ...state,
-        incident: action.payload,
+        records: { ...action.payload.body.data },
       };
 
     case ASYNC_START:

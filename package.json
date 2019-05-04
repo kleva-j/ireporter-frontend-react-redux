@@ -13,7 +13,7 @@
     "start:prod": "node server.js",
     "start": "node index.js",
     "webpack": "webpack",
-    "test": "jest",
+    "test": "jest --updateSnapshot",
     "test:watch": "jest --watch --updateSnapshot",
     "test:coverage": "jest --coverage --colors --updateSnapshot"
   },
@@ -67,6 +67,7 @@
     "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
+    "redux-mock-store": "^1.5.3",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "superagent": "^4.1.0",

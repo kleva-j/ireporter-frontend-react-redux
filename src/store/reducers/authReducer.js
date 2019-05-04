@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
     case SIGNUP:
       return {
         ...state,
-        currentUser: action.payload.data[0],
+        currentUser: action.payload ? action.payload.data[0] : {},
       };
 
     case ASYNC_START:

@@ -28,21 +28,21 @@ const Sidebar = () => (
     <div className="details">
       <ul className="list-item">
         <li className="item">
-          <Link to="/incidents/red-flag"><i className="hic fas fa-flag-checkered" title="red-flags" /></Link>
-          <Link to="/incidents/red-flag" className="sd">
+          <a href="/incidents/red-flag"><i className="hic fas fa-flag-checkered" title="red-flags" /></a>
+          <a href="/incidents/red-flag" className="sd">
             Red-Flags
             {' '}
             <b>124</b>
-          </Link>
+          </a>
         </li>
 
         <li className="item">
-          <Link to="/incidents/intervention"><i className="hic fas fa-headset" title="interventions" /></Link>
-          <Link to="/incidents/intervention" className="sd">
+          <a href="/incidents/intervention"><i className="hic fas fa-headset" title="interventions" /></a>
+          <a href="/incidents/intervention" className="sd">
             Interventions
             {' '}
             <b>75</b>
-          </Link>
+          </a>
         </li>
 
       </ul>

@@ -17,6 +17,11 @@ const requests = {
     .set('Access-Control-Allow-Origin', '*')
     .use(tokenPlugin)
     .then(responseBody),
+
+  get: url => superagent
+    .get(`${API_ROOT}${url}`)
+    .set('Access-Control-Allow-Origin', '*')
+    .use(tokenPlugin)
 };
 
 const Auth = {
@@ -26,6 +31,7 @@ const Auth = {
 
 const crud = {
   createIncident: (data, type) => requests.post(`/${type}`, data),
+  getIncidents: type => requests.get(`/${type}`)
 };
 
 export default {

@@ -7,7 +7,7 @@ import Toast from 'toasted-notes';
 import Loader from '../loaders';
 import Navbar from '../header/Index';
 import Nav from '../header/signedOutLinks';
-import { loginAction } from '../../store/actions';
+import { loginAction } from '../../store/actions/authActions';
 
 const Login = (props) => {
   const [userDetails, setUserDetails] = useState({
