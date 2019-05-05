@@ -5,3 +5,5 @@ export const ASYNC_START = 'ASYNC_START';
 export const ASYNC_END = 'ASYNC_END';
 export const CREATE_INCIDENT = 'CREATE_INCIDENT';
 export const GET_ALL_INCIDENTS = 'GET_ALL_INCIDENTS';
+export const GET_PROFILE = 'GET_PROFILE';
+export const GET_RECORD_COUNT = 'GET_RECORD_COUNT';

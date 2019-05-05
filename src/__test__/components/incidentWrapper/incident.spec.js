@@ -4,28 +4,27 @@ import configureStore from 'redux-mock-store';
 import { BrowserRouter } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import Wrapper from '../../../components/incidentWrapper/wrapper';
+import Incident from '../../../components/incidentWrapper/incident';
 
 describe('Reports component', () => {
   const mockStore = configureStore([thunk]);
   const initialState = {};
   const props = {
-    incidents: {
-      id: 1,
-      type: 'intervention',
-      createdOn: 'Wed Oct 18 2017 12:41:34 GMT+0000 (UTC)',
-      comment: 'a>>b',
-      status: 'Resolved'
-    }
+    id: 1,
+    type: 'intervention',
+    createdOn: 'Wed Oct 18 2017 12:41:34 GMT+0000 (UTC)',
+    comment: 'a>>b',
+    status: 'Resolved'
   };
   it('renders correctly', () => {
     const wrapper = mount(
       <Provider store={mockStore(initialState)}>
         <BrowserRouter>
-          <Wrapper {...props} />
+          <Incident {...props} />
         </BrowserRouter>
       </Provider>
     );
-    expect(wrapper.find('.t-c').exists()).toBe(true);
+    expect(wrapper.find('.item').exists()).toBe(true);
+    expect(wrapper.find('.list').exists()).toBe(true);
   });
 });

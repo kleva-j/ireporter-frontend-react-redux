@@ -22,16 +22,19 @@ const requests = {
     .get(`${API_ROOT}${url}`)
     .set('Access-Control-Allow-Origin', '*')
     .use(tokenPlugin)
+    .then(responseBody),
 };
 
 const Auth = {
-  login: userData => requests.post('/users/auth/login', userData),
-  signup: userData => requests.post('/users/auth/signup', userData),
+  login: userData => requests.post('/user/login', userData),
+  signup: userData => requests.post('/user/signup', userData),
+  profile: () => requests.get('/user/userprofile')
 };
 
 const crud = {
   createIncident: (data, type) => requests.post(`/${type}`, data),
-  getIncidents: type => requests.get(`/${type}`)
+  getIncidents: type => requests.get(`/${type}`),
+  getRecordCount: type => requests.get(`/records/${type}/count`),
 };
 
 export default {
