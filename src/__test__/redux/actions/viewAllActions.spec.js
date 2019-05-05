@@ -6,7 +6,7 @@ import viewAllActions from '../../../store/actions/viewAllActions';
 const mockStore = configureMockStore([thunk]);
 let store;
 
-describe('Signup action creator', () => {
+describe('ViewAll action creator', () => {
   test('should dispatch a successful viewAll action', () => {
     store = mockStore();
     return store.dispatch(viewAllActions())
