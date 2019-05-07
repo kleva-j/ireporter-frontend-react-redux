@@ -2,6 +2,10 @@ a{
   text-decoration: none;
 }
 
+.move-left {
+  text-align: left;
+}
+
 .logo{
   display: inline-block;
   margin-right: 1rem;
@@ -279,3 +283,32 @@ li a{ color: var(--darken)}
   }
 }
 
+@media (max-width:1300px) {
+  .poster {
+    width: 600px;
+    height: 700px;
+  }
+  .l-h{
+    width: 65%
+  }
+}
+
+@media (max-width:1000px) {
+  .poster {
+    width: 400px;
+    height: 500px;
+  }
+  .flex.dab {
+    display: flex;
+    flex-direction: column
+  }
+}
+
+@media (max-width:750px) {
+  .poster {
+    display: none;
+  }
+  .side.t-c {
+    margin: 200px auto;
+  }
+}

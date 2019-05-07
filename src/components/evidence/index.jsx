@@ -13,9 +13,7 @@ const Evidence = (props) => {
       const fileReader = new FileReader();
       fileReader.onload = () => {
         const dataURL = fileReader.result;
-        if (file.type.includes('image')) {
-          setDataUrl(dataURL);
-        }
+        if (file.type.includes('image')) setDataUrl(dataURL);
       };
       if (file) fileReader.readAsDataURL(file);
       setEvidence(files);

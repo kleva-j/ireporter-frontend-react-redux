@@ -6,6 +6,8 @@ const Incident = (props) => {
   const { id, type, createdOn, comment, status } = props;
   const [, month, date] = (new Date(createdOn).toDateString()).split(' ');
   const [title] = comment ? comment.split('>>') : '';
+  const viewPageLink = `/incident/red-flag/${id}`;
+  const editPageLink = `/incident/red-flag/${id}`;
   let indicator;
 
   switch (status) {
@@ -29,20 +31,20 @@ const Incident = (props) => {
         <br />
         {month}
       </div>
-      <div className="grow-1">
-        <Link to="/" className="pd-l">
-          <span className="wrap bolder">{title}</span>
+      <div className="grow-1 move-left">
+        <Link to={viewPageLink} className="pd-l">
+          <span className="wrap bolder left">{title}</span>
         </Link>
-      </div>
-      <div className="pd-l">
-        <small className="pd-r-sm pd-l-sm">
-          status:
-          <i className={indicator}>{status}</i>
-        </small>
+        <div className="pd-l">
+          <small className="pd-r-sm pd-l-sm">
+            status:
+            <i className={indicator}>{status}</i>
+          </small>
+        </div>
       </div>
       <div className="edit">
         <span className="btn bd-grn bg-t mg-r">
-          <Link to="/" className="grn">Edit</Link>
+          <Link to={editPageLink} className="grn">Edit</Link>
         </span>
         <span className="btn bd-red bg-t red" data-id={id} data-type={type}>Delete</span>
       </div>
@@ -51,7 +53,7 @@ const Incident = (props) => {
 };
 
 Incident.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
   createdOn: PropTypes.string.isRequired,
   comment: PropTypes.string.isRequired,

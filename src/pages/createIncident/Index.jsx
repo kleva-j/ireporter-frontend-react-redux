@@ -20,7 +20,7 @@ const CreateIncident = (props) => {
     comment: '',
     evidence: '',
     location: '',
-    type: recordType ? 'red-flag' : 'intervention'
+    type: ''
   });
 
   const updateState = (event) => {
@@ -33,20 +33,22 @@ const CreateIncident = (props) => {
 
   const { history, match: { path }, inProgress, create } = props;
 
-  const submitIncident = async (event) => {
-    event.preventDefault();
-    const result = await create(state, recordType);
-    if (result && result.response.body.status !== 201) {
-      const { response: { body: { message } } } = result;
-      return Toast.notify(message);
-    }
-    return history.push(`/incidents/${recordType}`);
-  };
-
   const getPath = () => {
     const splitedPath = path.split('/');
     const type = splitedPath[splitedPath.length - 1];
     setRecordType(type);
+    return type;
+  };
+
+  const submitIncident = async (event) => {
+    event.preventDefault();
+    const newType = (getPath()) === 'red-flags' ? 'red-flag' : 'intervention';
+    state.type = newType; state.comment = `${state.subject}>>${state.comment}`;
+    const result = await create(state, recordType);
+    if (result && result.status !== 201) {
+      return Toast.notify(result.errors[0]);
+    }
+    return history.push(`/incidents/${newType}`);
   };
 
   const getCoordinates = () => {
@@ -71,7 +73,9 @@ const CreateIncident = (props) => {
     }
   };
 
-  useEffect(() => getPath(), []);
+  useEffect(() => {
+    getPath();
+  }, []);
 
   const { lng, lat } = coord;
   const { subject, comment, location } = state;
@@ -89,9 +93,11 @@ const CreateIncident = (props) => {
             <div className="breadboard">
               <div className="breadboard-header j-c-sb mg-t-b">
                 <h3 className="mg-auto f-s-2">
-                  Create Record of
+                  Create
                   {' '}
-                  {recordType === 'red-flags' ? ' a Redflag' : 'an Intervention'}
+                  {recordType === 'red-flags' ? ' a redflag' : 'an intervention'}
+                  {' '}
+                  record
                 </h3>
               </div>
 
@@ -117,7 +123,7 @@ const CreateIncident = (props) => {
                     <div>
                       <small className="f-s-sm">To make use of your current location leave the input field empty</small>
                     </div>
-                    <button className="btn default address" onClick={findLocation}>Find Location</button>
+                    <button className="btn default address local" onClick={findLocation}>Find Location</button>
                   </div>
                   <Map lng={lng} lat={lat} />
                   <button type="submit" className="btn primary mg-lg-t-b">Create</button>

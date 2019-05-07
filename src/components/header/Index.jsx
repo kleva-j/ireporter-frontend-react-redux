@@ -5,7 +5,7 @@ import logo from '../../assets/images/bg-2.svg';
 const Navbar = ({ children }) => (
   <div className="navbar fixed shade-default bg-light">
     <div className="container">
-      <a href="/public" className="logo">
+      <a href="/" className="logo">
         <img src={logo} height="65px" alt="logo" />
         eporter
       </a>

@@ -20,10 +20,14 @@ export default (state = initialState, action) => {
       };
 
     case ASYNC_START:
-      return { ...state, inProgress: true };
+      if (action.subtype === SIGNUP) {
+        return { ...state, inProgress: true };
+      } return state;
 
     case ASYNC_END:
-      return { ...state, inProgress: false };
+      if (action.subtype === SIGNUP) {
+        return { ...state, inProgress: false };
+      } return state;
 
     default:
       return state;

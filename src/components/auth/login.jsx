@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -23,8 +24,7 @@ const Login = (props) => {
     event.preventDefault();
     const result = await logIn(userDetails);
     if (result && result.response.body.status !== 200) {
-      const { response: { body: { error } } } = result;
-      return Toast.notify(error);
+      return Toast.notify('This is a wrong username or password');
     }
     return history.push('/profile');
   };
@@ -55,7 +55,7 @@ const Login = (props) => {
           <button type="submit" className="btn primary">Log in</button>
           <small className="block text-dark">
           Don't have an account? sign up
-            <a className="underscore" href="/signup"> Here</a>
+            <Link className="underscore" to="/signup"> Here</Link>
           </small>
         </form>
       </div>

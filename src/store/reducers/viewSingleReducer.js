@@ -1,29 +1,25 @@
-import {
-  ASYNC_START,
-  ASYNC_END,
-  CREATE_INCIDENT
-} from '../actions/actionTypes';
+import { ASYNC_START, ASYNC_END, GET_SINGLE_INCIDENT } from '../actions/actionTypes';
 
 const initialState = {
-  incident: {},
-  inProgress: false
+  record: {},
+  inProgress: false,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_INCIDENT:
+    case GET_SINGLE_INCIDENT:
       return {
         ...state,
-        incident: action.payload,
+        record: { ...action.payload.data[0] },
       };
 
     case ASYNC_START:
-      if (action.subtype === CREATE_INCIDENT) {
+      if (action.subtype === GET_SINGLE_INCIDENT) {
         return { ...state, inProgress: true };
       } return state;
 
     case ASYNC_END:
-      if (action.subtype === CREATE_INCIDENT) {
+      if (action.subtype === GET_SINGLE_INCIDENT) {
         return { ...state, inProgress: false };
       } return state;
 

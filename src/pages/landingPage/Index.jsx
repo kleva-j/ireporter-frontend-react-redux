@@ -12,7 +12,7 @@ const LandingPage = () => (
     </Navbar>
     <section className="main">
       <main className="mainsection flex">
-        <img src={itMatters} alt="Nothing to show" />
+        <img src={itMatters} alt="Nothing to show" className="poster" />
         <div className="side t-c">
           <h1>WELCOME TO iREPORTER</h1>
           <p>Report any incident related to corruption</p>
@@ -25,13 +25,13 @@ const LandingPage = () => (
       <section>
         <div className="topSec t-c">
           <h1>What is iReporter </h1>
-          <p className="w-75 l-h mg-auto">
+          <p className="w-100 l-h mg-auto">
             This is a platform enables any/every citizen to bring any form of corruption to the notice of appropriate authorities and the general public. You can also provide evidence to prove your claim. This kind of evidence can be images or videos. You can also post an address to the site of the incident. This platform also enables every citizen to report issues around their community that require immediate intervention to.
           </p>
         </div>
       </section>
       <aside>
-        <div className="flex container mg-lg-t-b">
+        <div className="flex container mg-lg-t-b dab">
           <img src={clowts} alt="people making efforts to make things work" />
           <div className="pd" id="learn-more">
             <h2 className="t-c">Let us all work together to curb out this epidemic from our society</h2>
