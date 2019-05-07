@@ -10,14 +10,18 @@ export default (state = initialState, action) => {
     case GET_ALL_INCIDENTS:
       return {
         ...state,
-        records: { ...action.payload.body.data },
+        records: { ...action.payload.data },
       };
 
     case ASYNC_START:
-      return { ...state, inProgress: true };
+      if (action.subtype === GET_ALL_INCIDENTS) {
+        return { ...state, inProgress: true };
+      } return state;
 
     case ASYNC_END:
-      return { ...state, inProgress: false };
+      if (action.subtype === GET_ALL_INCIDENTS) {
+        return { ...state, inProgress: false };
+      } return state;
 
     default:
       return state;

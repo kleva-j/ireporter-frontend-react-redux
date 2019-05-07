@@ -110,7 +110,7 @@ h1{
   padding: 1rem;
   box-shadow: var(--shadow);
   margin: 2px 0;
-  text-align: left;
+  text-align: center;
   background: white;
   -webkit-transition: 500ms ease-in;
   -moz-transition: 500ms ease-in; 
@@ -227,7 +227,7 @@ small { font-size: 15px }
 
   .sd{
     display: flex;
-    justify-content: space-between
+    justify-content: space-around
   }
 
   .close{

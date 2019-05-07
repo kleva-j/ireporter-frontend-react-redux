@@ -2,32 +2,33 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import Sidebar from '../../components/sidebar/Index';
-import ViewSingleIncident from '../../pages/viewSingleIncident/Index';
+import ViewIncidents from '../../pages/viewIncidents/Index';
 import Navbar from '../../components/header/Index';
 import Nav from '../../components/header/SignedInLinks';
 
-describe('ViewSingleIncident component', () => {
+describe('ViewIncidents component', () => {
   const mockStore = configureStore([thunk]);
   const initialState = {
-    viewSingleReducer: {
-      record: {}
-    },
     profileReducer: {
       profile: { firstname: '', lastname: '', username: '', email: '', phonenumber: '' },
+    },
+    viewAllReducer: {
+      inProgress: false,
+      records: {}
     }
   };
   const props = {};
   const wrapper = mount(
     <Provider store={mockStore(initialState)}>
       <BrowserRouter>
-        <ViewSingleIncident {...props} />
+        <ViewIncidents {...props} />
       </BrowserRouter>
     </Provider>
   );
-  it('should render the ViewSingleIncident component', () => {
+  it('should render the ViewIncidents component', () => {
     expect(wrapper.find('section').exists()).toBe(true);
   });
   it('should contain the Navbar, button and sidebar components', () => {

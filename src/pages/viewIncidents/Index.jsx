@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Toast from 'toasted-notes';
@@ -12,19 +13,27 @@ import viewAllAction from '../../store/actions/viewAllActions';
 
 const ViewIncident = (props) => {
   const [path, setPath] = useState('red-flags');
+  const [type, setType] = useState('red-flag');
 
-  const { getIncidents, match: { path: index }, inProgress, incidents } = props;
+  const { getIncidents,
+    inProgress,
+    incidents } = props;
 
-  const getPath = async () => {
-    const splitedPath = index.split('/');
-    const type = (splitedPath[splitedPath.length - 1] === 'red-flag') ? 'red-flags' : 'interventions';
-    setPath(type);
-    const result = await getIncidents(type);
-    if (result) Toast.notify(`There was an error fetching your ${type}`);
+  const linkToPath = `/create-incident/${path}`;
+
+  const getRecord = async (newPath) => {
+    const result = newPath ? await getIncidents(newPath) : await getIncidents(path);
+    if (result) Toast.notify('There was an error fetching your records');
+  };
+
+  const setNewContexts = (newType, newPath) => {
+    setPath(newPath);
+    setType(newType);
   };
 
   useEffect(() => {
-    getPath();
+    getRecord();
+    setPath(path);
   }, []);
 
   return (
@@ -34,14 +43,14 @@ const ViewIncident = (props) => {
       </Navbar>
       <section>
         <div className="flex">
-          <Sidebar />
+          <Sidebar changePath={setNewContexts} getRecord={getRecord} />
           <div className="right w-100">
             <div className="breadboard">
               <div className="breadboard-header j-c-sb mg-t-b flex-block-i">
                 <h3 className="flex-75 t-c mg-0 f-s-2">
                   Your
                   {' '}
-                  {path}
+                  {type}
                   {' '}
                   Records
                 </h3>
@@ -51,7 +60,7 @@ const ViewIncident = (props) => {
               <div className="flex">
                 <div className="grow-1" />
                 <span className="btn bd-create mg-b">
-                  <Link to="/create-incident" className="blu">
+                  <Link to={linkToPath} className="blu">
                     + Create
                     {' '}
                     {path}
@@ -76,7 +85,6 @@ const ViewIncident = (props) => {
 };
 
 ViewIncident.propTypes = {
-  match: PropTypes.object.isRequired,
   getIncidents: PropTypes.func.isRequired,
   inProgress: PropTypes.bool.isRequired,
   incidents: PropTypes.object.isRequired,

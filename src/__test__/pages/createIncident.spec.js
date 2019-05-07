@@ -5,7 +5,7 @@ import CreateIncident from '../../pages/createIncident/Index';
 
 describe('CreateIncident component', () => {
   const wrapper = shallow(<CreateIncident />);
-  it('should render without failing', () => {
+  test('should render without failing', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

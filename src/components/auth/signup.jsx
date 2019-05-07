@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-bind */
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Toast from 'toasted-notes';
 import Loader from '../loaders';
@@ -38,9 +39,9 @@ const Signup = (props) => {
     event.preventDefault();
     if (password !== password2) return Toast.notify('Ensure the password and confirm password are the same');
     const result = await signUp(userDetails);
-    if (result) {
-      const { response: { body: { error } } } = result;
-      Toast.notify(error);
+    if (result && result.response.body.status !== 200) {
+      const { response: { body: { errors } } } = result;
+      Toast.notify(errors[0]);
     } else {
       history.push('/profile');
     }
@@ -84,7 +85,7 @@ const Signup = (props) => {
           <small className="block text-dark">
             Already have an account? log in
             {' '}
-            <a className="underscore" href="/login">Here</a>
+            <Link className="underscore" to="/login">Here</Link>
           </small>
         </form>
       </div>

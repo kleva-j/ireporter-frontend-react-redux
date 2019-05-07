@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 import Sidebar from '../../components/sidebar/Index';
 import Navbar from '../../components/header/Index';
 import Nav from '../../components/header/SignedInLinks';
-import { getProfile, getRecordCount } from '../../store/actions/profileActions';
+import { getRecordCount } from '../../store/actions/profileActions';
 
 const Profile = (props) => {
-  const { getUserProfile, getRecord, profile, intervention } = props;
+  const { getRecord, intervention } = props;
   const redFlag = props['red-flag'];
   const { Resolved: intRes, Rejected: intRej, Draft: intDra } = intervention;
   const { Resolved: redRes, Rejected: redRej, Draft: redDra } = redFlag;
@@ -18,12 +18,13 @@ const Profile = (props) => {
   const totalIntervention = (intRej + intRes + intUiv + intDra);
 
   const getAllRecords = async () => {
-    await getUserProfile();
     await getRecord('red-flag');
     await getRecord('intervention');
   };
 
-  useEffect(() => getAllRecords(), []);
+  useEffect(() => {
+    getAllRecords();
+  }, []);
 
   return (
     <>
@@ -32,7 +33,7 @@ const Profile = (props) => {
       </Navbar>
       <section>
         <div className="flex">
-          <Sidebar profile={profile} redFlag={totalRedflags} intervention={totalIntervention} />
+          <Sidebar />
           <div className="right w-100">
             <div className="breadboard">
               <div className="breadboard-header j-c-sb mg-t-b">
@@ -99,13 +100,10 @@ const Profile = (props) => {
 
 const mapStateToProps = ({ profileReducer }) => ({ ...profileReducer });
 const mapDispatchToProps = () => dispatch => ({
-  getUserProfile: () => dispatch(getProfile()),
   getRecord: recordType => dispatch(getRecordCount(recordType))
 });
 
 Profile.propTypes = {
-  profile: PropTypes.object.isRequired,
-  getUserProfile: PropTypes.func.isRequired,
   getRecord: PropTypes.func.isRequired,
   intervention: PropTypes.object.isRequired,
   'red-flag': PropTypes.object.isRequired,

@@ -8,7 +8,7 @@ const responseBody = res => res.body;
 const token = window.localStorage.getItem('jwt');
 
 const tokenPlugin = (req) => {
-  req.set('authorization', `BEARER ${token}`);
+  req.set('authorization', token);
 };
 
 const requests = {
@@ -35,6 +35,7 @@ const crud = {
   createIncident: (data, type) => requests.post(`/${type}`, data),
   getIncidents: type => requests.get(`/${type}`),
   getRecordCount: type => requests.get(`/records/${type}/count`),
+  getSingleIncident: (type, id) => requests.get(`/${type}/${id}`),
 };
 
 export default {

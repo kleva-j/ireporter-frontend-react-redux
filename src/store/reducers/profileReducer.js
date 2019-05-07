@@ -9,7 +9,8 @@ const initialState = {
   profile: {},
   'red-flag': {},
   intervention: {},
-  inProgress: false
+  inProgress: false,
+  currentPage: ''
 };
 
 export default (state = initialState, action) => {
@@ -27,10 +28,16 @@ export default (state = initialState, action) => {
       };
 
     case ASYNC_START:
-      return { ...state, inProgress: true };
+      if (action.subtype === GET_RECORD_COUNT
+        || action.subtype === GET_PROFILE) {
+        return { ...state, inProgress: true };
+      } return state;
 
     case ASYNC_END:
-      return { ...state, inProgress: false };
+      if (action.subtype === GET_RECORD_COUNT
+        || action.subtype === GET_PROFILE) {
+        return { ...state, inProgress: false };
+      } return state;
 
     default:
       return state;
