@@ -15,9 +15,7 @@ const ViewIncident = (props) => {
   const [path, setPath] = useState('red-flags');
   const [type, setType] = useState('red-flag');
 
-  const { getIncidents,
-    inProgress,
-    incidents } = props;
+  const { getIncidents, inProgress, incidents } = props;
 
   const linkToPath = `/create-incident/${path}`;
 
@@ -72,7 +70,7 @@ const ViewIncident = (props) => {
               <div className="dip">
                 {inProgress && <Loader loading />}
                 <ul className="list-item">
-                  <IncidentList incidents={incidents} />
+                  <IncidentList incidents={incidents} getRecord={getRecord} />
                 </ul>
               </div>
 

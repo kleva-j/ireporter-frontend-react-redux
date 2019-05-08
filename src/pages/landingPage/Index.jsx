@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
+import { Link } from 'react-router-dom'
 import itMatters from '../../assets/images/it_matters.jpg';
 import clowts from '../../assets/images/clowts.png';
 import Navbar from '../../components/header/Index';
@@ -18,7 +19,7 @@ const LandingPage = () => (
           <p>Report any incident related to corruption</p>
           <div className="button-group j-c-c">
             <div className="btn mg no-hover white" href="#learn-more">Learn more</div>
-            <div className="btn mg no-hover white"><a className="span" href="/signup"> Get started</a></div>
+            <div className="btn mg no-hover white"><Link className="span" to="/signup"> Get started</Link></div>
           </div>
         </div>
       </main>
@@ -39,9 +40,9 @@ const LandingPage = () => (
             <ul>
               <li className="steps">
                 Create an account by signing up
-                <a href="/login" className="underscore">
+                <Link to="/signup" className="underscore">
                   _Here
-                </a>
+                </Link>
               </li>
               <li className="steps">Report incidents of corrupt practices around you by creating a red-flag</li>
               <li className="steps">Reports incidents that need immediate attention by creatin an intervention</li>

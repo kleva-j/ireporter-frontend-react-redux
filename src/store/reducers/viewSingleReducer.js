@@ -1,4 +1,4 @@
-import { ASYNC_START, ASYNC_END, GET_SINGLE_INCIDENT } from '../actions/actionTypes';
+import { ASYNC_START, ASYNC_END, GET_SINGLE_INCIDENT, DELETE_INCIDENT } from '../actions/actionTypes';
 
 const initialState = {
   record: {},
@@ -13,13 +13,18 @@ export default (state = initialState, action) => {
         record: { ...action.payload.data[0] },
       };
 
+    case DELETE_INCIDENT:
+      return state;
+
     case ASYNC_START:
-      if (action.subtype === GET_SINGLE_INCIDENT) {
+      if (action.subtype === GET_SINGLE_INCIDENT
+        || action.subtype === DELETE_INCIDENT) {
         return { ...state, inProgress: true };
       } return state;
 
     case ASYNC_END:
-      if (action.subtype === GET_SINGLE_INCIDENT) {
+      if (action.subtype === GET_SINGLE_INCIDENT
+        || action.subtype === DELETE_INCIDENT) {
         return { ...state, inProgress: false };
       } return state;
 

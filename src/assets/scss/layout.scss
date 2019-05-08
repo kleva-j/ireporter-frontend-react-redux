@@ -1,3 +1,7 @@
+body{
+  overflow: hidden;
+}
+
 a{
   text-decoration: none;
 }
@@ -20,8 +24,13 @@ a{
 }
 
 .white{
-  background: white
+  background: white;
 }
+
+#comment {
+  word-wrap: break-word;
+}
+
 .span {
   color: #444;
   background: white
@@ -165,10 +174,16 @@ li a{ color: var(--darken)}
   padding: 30px 20px;
 }
 
-.wrap {
+.list.item{
+  overflow: hidden;
+}
+
+.wrap, .move-left {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   word-wrap: break-word;
   word-break: break-all;
-  text-overflow: ellipsis;
 }
 
 .lg { 
