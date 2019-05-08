@@ -7,7 +7,7 @@ import {
   ASYNC_END,
 } from './actionTypes';
 
-const { Auth } = agent;
+const { Auth, clearStorage } = agent;
 
 export const loginAction = userData => async (dispatch) => {
   try {
@@ -35,4 +35,7 @@ export const signupAction = userData => async (dispatch) => {
   }
 };
 
-export const logoutUser = () => ({ type: LOGOUT });
+export const logoutUser = () => (dispatch) => {
+  clearStorage();
+  dispatch({ type: LOGOUT });
+};

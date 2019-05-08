@@ -45,7 +45,12 @@ const crud = {
   deleteSingleIncident: url => requests.delete(url)
 };
 
+const clearStorage = () => {
+  localStorage.clear();
+};
+
 export default {
   Auth,
   crud,
+  clearStorage
 };
