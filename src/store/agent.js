@@ -5,10 +5,8 @@ const superagent = superagentPromise(_superagent, global.Promise);
 const API_ROOT = 'https://i--reporter--api.herokuapp.com/api/v1';
 const responseBody = res => res.body;
 
-const token = window.localStorage.getItem('jwt');
-
 const tokenPlugin = (req) => {
-  req.set('authorization', token);
+  req.set('authorization', window.localStorage.getItem('jwt'));
 };
 
 const requests = {

@@ -18,12 +18,11 @@ const Profile = (props) => {
   const totalRedflags = (redRej + redRes + redUiv + redDra);
   const totalIntervention = (intRej + intRes + intUiv + intDra);
 
-  const getAllRecords = async () => {
-    await getRecord('red-flag');
-    await getRecord('intervention');
-  };
-
   useEffect(() => {
+    const getAllRecords = async () => {
+      await getRecord('red-flag');
+      await getRecord('intervention');
+    };
     getAllRecords();
   }, []);
 

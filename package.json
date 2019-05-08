@@ -88,7 +88,6 @@
     "express": "^4.16.4",
     "history": "^4.7.2",
     "mapbox-gl": "^0.54.0",
-    "nodemon": "^1.18.10",
     "prop-types": "^15.7.2",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",

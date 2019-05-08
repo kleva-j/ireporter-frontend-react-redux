@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/images/bg-2.svg';
 
 const Navbar = ({ children }) => (
-  <div className="navbar fixed shade-default bg-light">
+  <div className="navbar fixed shade-default bg-light index">
     <div className="container">
       <Link to="/" className="logo">
         <img src={logo} height="65px" alt="logo" />

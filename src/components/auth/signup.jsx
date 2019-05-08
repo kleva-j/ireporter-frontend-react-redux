@@ -43,7 +43,7 @@ const Signup = (props) => {
       const { response: { body: { errors } } } = result;
       Toast.notify(errors[0]);
     } else {
-      history.push('/profile');
+      return history.push('/incidents/red-flag');
     }
   };
 

@@ -26,7 +26,7 @@ const Login = (props) => {
     if (result && result.response.body.status !== 200) {
       return Toast.notify('This is a wrong username or password');
     }
-    return history.push('/profile');
+    return history.push('/incidents/red-flag');
   };
 
   const updateLoginDetails = (event) => {

@@ -34,7 +34,7 @@ const Sidebar = (props) => {
       <div className="profile">
 
         <div className="user item">
-          <Link to="/profile"><i className="fas fa-user-circle" title="user profile" /></Link>
+          <i className="fas fa-user-circle" title="user profile" />
         </div>
         <div className="close">
           <div className="mg-t">
