@@ -2,7 +2,8 @@ import {
   LOGIN,
   SIGNUP,
   ASYNC_START,
-  ASYNC_END
+  ASYNC_END,
+  LOGOUT
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -28,6 +29,9 @@ export default (state = initialState, action) => {
       if (action.subtype === SIGNUP) {
         return { ...state, inProgress: false };
       } return state;
+
+    case LOGOUT:
+      return {};
 
     default:
       return state;

@@ -45,21 +45,21 @@ const Profile = (props) => {
                 <div className="heading">Red-Flags</div>
                 <div className="drop">
                   <div className="j-c-sa grow-1">
-                    <div>
+                    <div className="t-c">
                       <h1><Link to="/incidents/red-flag">{totalRedflags || 0}</Link></h1>
                       <h4>Total</h4>
                     </div>
-                    <div>
+                    <div className="t-c">
                       <h1><Link to="/incidents/red-flag">{redRes || 0}</Link></h1>
                       <h4>Resolved</h4>
                     </div>
                   </div>
                   <div className="j-c-sa grow-1">
-                    <div>
+                    <div className="t-c">
                       <h1><Link to="/incidents/red-flag">{redUiv || 0}</Link></h1>
                       <h4>Under Investigation</h4>
                     </div>
-                    <div>
+                    <div className="t-c">
                       <h1><Link to="/incidents/red-flag">{redRej || 0}</Link></h1>
                       <h4>Rejected</h4>
                     </div>
@@ -70,21 +70,21 @@ const Profile = (props) => {
                 <div className="heading">Interventions</div>
                 <div className="drop">
                   <div className="j-c-sa grow-1">
-                    <div>
+                    <div className="t-c">
                       <h1><Link to="/incidents/intervention">{totalIntervention || 0}</Link></h1>
                       <h4>Total</h4>
                     </div>
-                    <div>
+                    <div className="t-c">
                       <h1><Link to="/incidents/intervention">{intRes || 0}</Link></h1>
                       <h4>Resolved</h4>
                     </div>
                   </div>
                   <div className="j-c-sa grow-1">
-                    <div>
+                    <div className="t-c">
                       <h1><Link to="/incidents/intervention">{intUiv || 0}</Link></h1>
                       <h4>Under Investigation</h4>
                     </div>
-                    <div>
+                    <div className="t-c">
                       <h1><Link to="/incidents/intervention">{intRej || 0}</Link></h1>
                       <h4>Rejected</h4>
                     </div>

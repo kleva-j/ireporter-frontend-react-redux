@@ -83,7 +83,7 @@ const CreateIncident = (props) => {
   return (
     <>
       <Navbar>
-        <Nav />
+        <Nav history={history} dashboard />
       </Navbar>
       <section>
         {getCoordinates()}
