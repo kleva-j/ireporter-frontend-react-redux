@@ -23,6 +23,12 @@ const requests = {
     .set('Access-Control-Allow-Origin', '*')
     .use(tokenPlugin)
     .then(responseBody),
+
+  delete: url => superagent
+    .del(`${API_ROOT}${url}`)
+    .set('Access-Control-Allow-Origin', '*')
+    .use(tokenPlugin)
+    .then(responseBody),
 };
 
 const Auth = {
@@ -36,6 +42,7 @@ const crud = {
   getIncidents: type => requests.get(`/${type}`),
   getRecordCount: type => requests.get(`/records/${type}/count`),
   getSingleIncident: (type, id) => requests.get(`/${type}/${id}`),
+  deleteSingleIncident: url => requests.delete(url)
 };
 
 export default {

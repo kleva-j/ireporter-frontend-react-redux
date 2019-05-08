@@ -1,3 +1,9 @@
+@media (max-width: 745px) {
+  .edit {
+    min-width: 145px;
+  }
+}
+
 @media (max-width: 545px) {
   .flex-block-i {
     flex-direction: column;
@@ -8,6 +14,9 @@
   }
   .flex-block-i > .flex-75 {
     font-size: 18px
+  }
+  .edit {
+    min-width: 120px;
   }
   .edit .btn, .edit .btn a {
     padding: .188rem .375rem;
