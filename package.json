@@ -15,7 +15,9 @@
     "webpack": "webpack",
     "test": "jest --updateSnapshot",
     "test:watch": "jest --watch --updateSnapshot",
-    "test:coverage": "jest --coverage --colors --updateSnapshot"
+    "test:coverage": "jest --coverage --colors --updateSnapshot",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -83,11 +85,11 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.10",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "classnames": "^2.2.6",
     "express": "^4.16.4",
     "history": "^4.7.2",
-    "mapbox-gl": "^0.54.0",
+    "mapbox-gl": "^1.10.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
@@ -104,6 +106,8 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "sweetalert": "^2.1.2",
-    "toasted-notes": "^2.1.5"
-  }
+    "toasted-notes": "^2.1.5",
+    "snyk": "^1.319.2"
+  },
+  "snyk": true
 }
