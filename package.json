@@ -88,7 +88,7 @@
     "axios": "^0.18.1",
     "classnames": "^2.2.6",
     "express": "^4.16.4",
-    "history": "^4.7.2",
+    "history": "^4.10.1",
     "mapbox-gl": "^1.10.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
