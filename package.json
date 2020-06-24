@@ -87,7 +87,7 @@
     "@emotion/core": "^10.0.28",
     "axios": "^0.18.1",
     "classnames": "^2.2.6",
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "history": "^4.7.2",
     "mapbox-gl": "^1.10.0",
     "prop-types": "^15.7.2",
