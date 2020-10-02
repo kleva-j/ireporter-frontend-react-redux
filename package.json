@@ -107,7 +107,7 @@
     "redux-thunk": "^2.3.0",
     "sweetalert": "^2.1.2",
     "toasted-notes": "^2.1.6",
-    "snyk": "^1.392.1"
+    "snyk": "^1.393.0"
   },
   "snyk": true
 }
