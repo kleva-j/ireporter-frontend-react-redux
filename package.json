@@ -85,7 +85,7 @@
   },
   "dependencies": {
     "@emotion/core": "^10.1.0",
-    "axios": "^0.20.0",
+    "axios": "^0.21.0",
     "classnames": "^2.2.6",
     "express": "^4.17.1",
     "history": "^4.10.1",
