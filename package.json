@@ -84,8 +84,8 @@
     "write-file-webpack-plugin": "^4.5.0"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.35",
-    "axios": "^0.20.0",
+    "@emotion/core": "^10.1.1",
+    "axios": "^0.21.0",
     "classnames": "^2.2.6",
     "express": "^4.17.1",
     "history": "^4.10.1",
@@ -107,7 +107,7 @@
     "redux-thunk": "^2.3.0",
     "sweetalert": "^2.1.2",
     "toasted-notes": "^2.1.6",
-    "snyk": "^1.414.0"
+    "snyk": "^1.425.4"
   },
   "snyk": true
 }
